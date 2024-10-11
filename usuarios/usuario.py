@@ -2,7 +2,6 @@ from datetime import datetime
 from usuarios.utils.roles import Rol
 
 class Usuario:
-    pass
     nombre: str
     apellido: str
     rol: Rol
@@ -17,3 +16,5 @@ class Usuario:
         self.contrasenia = contrasenia
         self.curp = curp
         self.fecha_nacimiento = fecha_nacimiento
+ 
+ 

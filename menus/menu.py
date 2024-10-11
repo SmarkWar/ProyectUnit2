@@ -55,14 +55,14 @@ class Menu:
                 mes = int(input("Ingresa el mes de nacimiento del empleado: "))
                 dia = int(input("Ingresa el dia de nacimiento del empleado: "))
                 fecha_nacimiento = datetime(ano, mes, dia)
-                fecha_ingreso_como_trabajador = datetime.now()
+                fecha_ingreso_trabajador = datetime.now()
                 rfc = input("Ingresa el RFC del empleado: ")
                 salario = input("Ingresa el sueldo del empleado: ")
                 horario = input("Ingresa el horario del empleado: ")
                 contrasenia = input("Ingresa la contraseña del empleado ")
                 rol = self.zoologico.asignar_rol_trabajador()
                 
-                empleado = Empleado(nombre=nombre, apellido=apellido, fecha_nacimiento=fecha_nacimiento, fecha_ingreso_como_trabajador=fecha_ingreso_como_trabajador, rfc=rfc, salario=salario, horario=horario, contrasenia=contrasenia, curp=curp, rol=rol)
+                empleado = Empleado(nombre=nombre, apellido=apellido, fecha_nacimiento=fecha_nacimiento, fecha_ingreso_trabajador=fecha_ingreso_trabajador, rfc=rfc, salario=salario, horario=horario, contrasenia=contrasenia, curp=curp, rol=rol)
                 print("El rol del empleado es: ", rol.value)
                 self.zoologico.registrar_empleado(empleado=empleado)
 

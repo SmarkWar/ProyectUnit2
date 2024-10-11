@@ -1,4 +1,4 @@
 from empleado import Empleado
 
-class Veterinario(Empleado):
+class Mantenimiento(Empleado):
     pass

@@ -1,7 +1,7 @@
 from zoologico.zoologico import Zoologico
 from usuarios.usuario import Usuario
 from director.director import Director
-from clientes.cliente import Cliente
+from visitantes.visitante import Cliente
 from empleados.empleado import Empleado
 
 class Menu:

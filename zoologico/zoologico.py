@@ -1,7 +1,8 @@
 from usuarios.usuario import Usuario
 from empleados.empleado import Empleado
-from clientes.cliente import Cliente
+from visitantes.visitante import Visitante
 
 class Zoologico:
+    
     def __init__(self, ): ###GENERAR DIRECTOR###
         pass

@@ -41,12 +41,16 @@ class Menu:
             print("2. Registrar visitante")
             print("3. Registrar animal")
             print("4. Listar empleados")
-            print("5. Ver mi informacion")
-            print("6. Salir")
+            print("5. Listar visitantes")
+            print("6. Listar animales")
+            print("7. Ver mi informacion")
+            print("8. Salir")
             opcion = int(input("Ingresa una opción: "))
             
             if opcion == 1:
+                print("------------------------------------------------------------")
                 print("\nSeleccionaste registrar empleado \n")
+                print("------------------------------------------------------------")
                 nombre = input("Ingresa el nombre del empleado: ")
                 apellido = input("Ingresa el apellido del empleado: ")
                 curp = input("Ingresa la curp del empleado: ")
@@ -67,17 +71,33 @@ class Menu:
                 self.zoologico.registrar_empleado(empleado=empleado)
 
             elif opcion == 2:
-                print("\nSeleccionaste registrar empleado \n")
+                print("------------------------------------------------------------")
+                print("\nSeleccionaste registrar un visitante \n")
+                print("------------------------------------------------------------")
                 pass
 
             elif opcion == 3:
-                print("\nSeleccionaste registrar empleado \n")
+                print("------------------------------------------------------------")
+                print("\nSeleccionaste registrar un animal \n")
+                print("------------------------------------------------------------")
                 pass
             
             elif opcion == 4:
+                print("************* LISTA DE EMPLEADOS *************")
+                print("------------------------------------------------------------")
                 self.zoologico.listar_empleados()
-
+                
             elif opcion == 5:
+                print("************* LISTA DE VISITANTES *************")
+                print("------------------------------------------------------------")
+                self.zoologico.listar_visitantes()
+                
+            elif opcion == 6:
+                print("************* LISTA DE ANIMALES *************")
+                print("------------------------------------------------------------")
+                self.zoologico.listar_animales()
+
+            elif opcion == 7:
                 print("************* INFORMACION DE USUARIO *************")
                 print(usuario.mostrar_informacion())
             

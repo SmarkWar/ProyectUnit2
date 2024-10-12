@@ -7,4 +7,3 @@ class Rol(Enum):
     GUIA = "Guía"
     MANTENIMIENTO = "Mantenimiento"
     VISITANTE = "Visitante"
-    ANIMAL = "Animal"

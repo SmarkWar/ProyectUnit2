@@ -1,11 +1,8 @@
 from usuarios.usuario import Usuario
 from empleados.empleado import Empleado
 from director.director import Director
-from empleados.administracion import administracion
-from empleados.guias import guia
-from empleados.mantenimiento import mantenimiento
-from empleados.veterinarios import veterinario
 from visitantes.visitante import Visitante
+from animales.animal import Animal
 from usuarios.utils.roles import Rol
 from typing import List
 from datetime import datetime
@@ -15,8 +12,10 @@ class Zoologico:
     lista_usuarios: List[Usuario] = []
     lista_empleados: List[Empleado] = []
     lista_visitantes: List[Visitante] = []
+    lista_animales: List[Animal] = []
     
-    def __init__(self): ###GENERAR DIRECTOR###
+    #### GENERAR DIRECTOR ####
+    def __init__(self):
         director = Director(nombre="Miguel", apellido="Garcia", fecha_nacimiento=datetime(day=15, month=6, year=1975), curp="MIGAR750615HGUCIA3", contrasenia="ADMIN1*2")
         self.lista_usuarios.append(director)
 
@@ -34,7 +33,7 @@ class Zoologico:
         print("\nSe registro con exito al empleado\n")
 
     def listar_empleados(self):
-        print("************* Empleados *************")
+        print("************* EMPLEADOS *************")
         for empleado in self.lista_empleados:
             print(empleado.mostrar_informacion())
 
@@ -59,4 +58,23 @@ class Zoologico:
             elif opcion == 4:
                 rol=Rol.MANTENIMIENTO
                 return rol
+            
+    #### ANIMALES ####
+    def registrar_visitantes(self, visitante: Visitante):
+        self.lista_visitantes.append(visitante)
+        print("Visitantes registrados con exito")
         
+    def listar_visitantes(self):
+        print("************* VISITANTES *************")
+        for visitante in self.lista_visitantes:
+            print(visitante.mostrar_info_visitante())
+            
+    #### ANIMALES ####
+    def registrar_animales(self, animal: Animal):
+        self.lista_animales.append(animal)
+        print("Animales registrados con exito")
+        
+    def listar_animales(self):
+        print("************* ANIMALES *************")
+        for animal in self.lista_animales:
+            print(animal.mostrar_info_animales())

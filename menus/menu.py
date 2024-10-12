@@ -131,5 +131,5 @@ class Menu:
                 print(usuario.mostrar_informacion())
             
             else:
-                print("\nHasta luegoo")
+                print("\nHasta luego")
                 break 

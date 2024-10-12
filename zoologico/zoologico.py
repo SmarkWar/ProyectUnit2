@@ -59,7 +59,7 @@ class Zoologico:
                 rol=Rol.MANTENIMIENTO
                 return rol
             
-    #### ANIMALES ####
+    #### VISITANTES ####
     def registrar_visitantes(self, visitante: Visitante):
         self.lista_visitantes.append(visitante)
         print("Visitantes registrados con exito")
@@ -78,3 +78,4 @@ class Zoologico:
         print("************* ANIMALES *************")
         for animal in self.lista_animales:
             print(animal.mostrar_info_animales())
+

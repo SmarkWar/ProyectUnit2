@@ -4,6 +4,7 @@ from director.director import Director
 from visitantes.visitante import Visitante
 from empleados.empleado import Empleado
 from usuarios.utils.roles import Rol
+from animales.animal import Animal
 from datetime import datetime
 
 class Menu:
@@ -74,13 +75,41 @@ class Menu:
                 print("------------------------------------------------------------")
                 print("\nSeleccionaste registrar un visitante \n")
                 print("------------------------------------------------------------")
-                pass
+                nombre = input("Ingresa el nombre del visitante: ")
+                apellido = input("Ingresa el apellido del visitante: ")
+                curp = input("Ingresa la curp del visitante: ")
+                
+                ano = int(input("Ingresa el año de nacimiento del visitante: "))
+                mes = int(input("Ingresa el mes de nacimiento del visitante: "))
+                dia = int(input("Ingresa el dia de nacimiento del visitante: "))
+                fecha_nacimiento = datetime(ano, mes, dia)
+                fecha_registro = datetime.now()
+                contrasenia = input("Ingresa la contraseña del visitante: ")
+                numero_visitas = 0
+
+                visitante = Visitante(nombre=nombre, apellido=apellido, fecha_nacimiento=fecha_nacimiento, fecha_registro=fecha_registro, curp=curp, numero_visitas=numero_visitas, contrasenia=contrasenia)
+                self.zoologico.registrar_visitantes(visitante=visitante)
+                
 
             elif opcion == 3:
                 print("------------------------------------------------------------")
                 print("\nSeleccionaste registrar un animal \n")
                 print("------------------------------------------------------------")
-                pass
+                tipo_animal = input("Ingresa el tipo de animal: ")
+                peso = input("Ingrese el peso del animal en kg: ")
+                enfermedades = input("Ingresa si el animal tiene alguna enfermedad: ")
+                frecuencia_alimentacion = input("Ingresa la cantidad de veces que el animal come al dia: ")
+                
+                ano = int(input("Ingresa el año de nacimiento del animal: "))
+                mes = int(input("Ingresa el mes de nacimiento del animal: "))
+                dia = int(input("Ingresa el dia de nacimiento del animal: "))
+                fecha_nacimiento = datetime(ano, mes, dia)
+                fecha_llegada_zoo = datetime.now()
+                tipo_alimentacion = input("Ingresa el tipo de alimentacion del animal: ")
+                vacunas = input("Ingresa las vacunas que ya posee el animal: ")
+
+                animal = Animal (tipo_animal=tipo_animal, peso=peso, fecha_nacimiento=fecha_nacimiento, fecha_llegada_zoo=fecha_llegada_zoo, enfermedades=enfermedades, frecuencia_alimentacion=frecuencia_alimentacion, tipo_alimentacion=tipo_alimentacion, vacunas=vacunas)
+                self.zoologico.registrar_animales(animal=animal)
             
             elif opcion == 4:
                 print("************* LISTA DE EMPLEADOS *************")

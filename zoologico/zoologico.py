@@ -104,6 +104,13 @@ class Zoologico:
         print("************* VISITANTES *************")
         for visitante in self.lista_visitantes:
             print(visitante.mostrar_info_visitante())
+
+    def eliminar_visitante(self, id: str):
+        for visitante in self.lista_visitantes:
+            if visitante.id == id.strip(): #CAMBIEEEEEEEEEE
+                self.lista_visitantes.remove(visitante)
+                print(f"Visitante {visitante.nombre} {visitante.apellido}, eliminado exitosamente.\n")
+                return
             
     #### ANIMALES ####
     def registrar_animales(self, animal: Animal):
@@ -128,4 +135,10 @@ class Zoologico:
         id = f"{alimentacion}{ano}{dia}{tipo}{aleatorio}{caracteres_aleatorios}{aleatorio2}{caracteres_aleatorios2}{longitud_mas_uno}"
         return id
     
-
+    def eliminar_animal(self, id: str):
+        for animal in self.lista_animales:
+            if animal.id_animal == id.strip():  
+                self.lista_animales.remove(animal)
+                print(f"Animal {animal.tipo_animal}, eliminado exitosamente.\n")
+                return
+    

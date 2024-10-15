@@ -51,7 +51,7 @@ class Menu:
                 print("11. Salir")
                 opcion = int(input("Ingresa una opción: "))
                 
-                if 1<= opcion <= 8:
+                if 1<= opcion <= 11:
                     if opcion == 1:
                         print("------------------------------------------------------------ \nSeleccionaste registrar empleado \n------------------------------------------------------------")
                         nombre = input("Ingresa el nombre del empleado: ")
@@ -137,6 +137,18 @@ class Menu:
                         print("************* Eliminar un empleado *************")
                         id = input("\nIngresa el id del empleado: ")
                         self.zoologico.eliminar_empleado(id=id)
+                    
+                    elif opcion == 9:
+                        print("************* Eliminar un visitante *************")
+                        id = input("\nIngresa el id del visitante: ")
+                        self.zoologico.eliminar_visitante(id=id)
+                    
+                    elif opcion == 10:
+                        print("************* Eliminar un animal *************")
+                        id = input("\nIngresa el id del animal: ")
+                        self.zoologico.eliminar_animal(id=id)
+
+
                     else:
                         print("\nHasta luego")
                         break 

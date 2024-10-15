@@ -154,7 +154,7 @@ class Menu:
                         break 
 
                 else:
-                    print("Opcion no válida. Por favor, elige un numero entre 1 y 8")
+                    print("Opcion no válida. Por favor, elige un numero entre 1 y 11")
                      
             except ValueError:
                 print("Entrada no válida. Por favor, ingresa un número entero")

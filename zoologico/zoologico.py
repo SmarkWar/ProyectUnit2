@@ -3,6 +3,7 @@ from empleados.empleado import Empleado
 from director.director import Director
 from visitantes.visitante import Visitante
 from animales.animal import Animal
+from visitas.visita import Visita
 from usuarios.utils.roles import Rol
 from typing import List
 from datetime import datetime
@@ -15,6 +16,27 @@ class Zoologico:
     lista_empleados: List[Empleado] = []
     lista_visitantes: List[Visitante] = []
     lista_animales: List[Animal] = []
+    list_visitas: List[Visita] = []
+    lista_id_visitantes: List[Visitante] = []
+    
+    #### VISITAS ####
+    def registrar_visitas(self, visita: Visita):
+        self.list_visitas.append(visita)
+        print("Visita registrada con exito")
+        
+    def listar_visitas(self):
+        print("************* VISITAS *************")
+        for visita in self.list_visitas:
+            print(visita.mostrar_info())
+            
+    def registrar_id_visitante(self, id_visitante: Visitante):
+        self.lista_id_visitantes.append(id_visitante)
+        
+    def listar_visitantes_visitas(self, visitante: Visitante):
+        for id_visitante in self.lista_id_visitantes:
+            for id in self.lista_visitantes:
+                if id_visitante == id:
+                    print(visitante.mostrar_info_visitante())
     
     #### GENERAR DIRECTOR ####
     def __init__(self):

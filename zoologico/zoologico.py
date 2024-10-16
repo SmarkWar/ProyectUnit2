@@ -259,4 +259,37 @@ class Zoologico:
             return costo_visita + boleto
         
         ###PROCESOS###
-        
+    
+    def registrar_proceso(self, proceso: Proceso):
+        self.lista_procesos.append(proceso)
+        print("Se registro con exito el proceso")
+
+    def listar_procesos(self):
+        print("***** PROCESOS *****")
+        for proceso in self.lista_procesos:
+            print(proceso.mostrar_info())
+    
+    def tipo_proceso(self):
+        while True:
+            try:
+                print("**** TIPO DE PROCESO ****")
+                print("1. Vegetariana")
+                print("2. Carnivora")
+                print("3. Omnivora")
+                print("4. Otro")
+                opcion= int(input("Seleccione el rol que va a tener el empleado: "))
+                
+                if 1 <= opcion <= 4: ###Condicion con intervalo##
+                    if opcion == 1:
+                        tipo_proceso = "Mantenimiento"
+                    elif opcion == 2:
+                        tipo_proceso = "Limpieza"
+                    elif opcion == 3:
+                        tipo_proceso = "Alimentacion"
+                    elif opcion == 4:
+                        tipo_proceso= input("Ingresa el tipo de proceso: ")
+                    return tipo_proceso
+                else:
+                    print("Opcion no válida. Por favor, elige un numero entre 1 y 4")
+            except ValueError:
+                print("Entrada no válida. Por favor, ingresa un número entero")

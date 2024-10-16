@@ -8,8 +8,8 @@ class Empleado(Usuario):
     salario: float
     horario: str
     
-    def __init__(self, id: str, nombre: str, apellido: str, fecha_nacimiento: datetime, curp: str, contrasenia: str, fecha_ingreso_trabajador: datetime, rfc: str, salario: float, horario: str, rol: Rol):
-        super().__init__(id=id, nombre=nombre, apellido=apellido, fecha_nacimiento=fecha_nacimiento, curp=curp, contrasenia=contrasenia, rol=rol)
+    def __init__(self, id: str, nombre: str, apellido: str, fecha_nacimiento: datetime, curp: str, fecha_ingreso_trabajador: datetime, rfc: str, salario: float, horario: str, rol: Rol):
+        super().__init__(id=id, nombre=nombre, apellido=apellido, fecha_nacimiento=fecha_nacimiento, curp=curp, rol=rol)
         self.fecha_ingreso_trabajador = fecha_ingreso_trabajador
         self.rfc = rfc
         self.salario = salario

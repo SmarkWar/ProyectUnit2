@@ -115,7 +115,58 @@ class Menu:
                     
                     elif opcion == 4:
                         print("------------------------------------------------------------ \nSeleccionaste registrar una visita \n------------------------------------------------------------")
-                        pass
+                        guia_acargo = input("Ingresa el ID del guia a cargo de la visita: ")
+                        for empleado in self.zoologico.lista_empleados:
+                            if empleado.id == guia_acargo:
+                                fecha_visita = datetime.now().day
+                                visita = Visita("", guia_acargo=guia_acargo, fecha_visita=fecha_visita, costo_visita=0, cantidad_adultos=0, cantidad_niños=0)
+                                id_visita = self.zoologico.generar_id_visita(visita=visita)
+                                visita.id_visita = id_visita
+                                print("El ID de la visita es: ", visita.id_visita)
+                                while True:
+                                    try:
+                                        print("\n*********** VISITA ***********")
+                                        print("1. Registrar visitante")
+                                        print("2. Mostrar visitantes registrados a la visita")
+                                        print("3. Salir")
+                                        opcion= int(input("Seleccione la opcion que desea: "))
+                                        if 1 <= opcion <= 3: ###Condicion con intervalo##
+                                            if opcion == 1:
+                                                id_visitante = input("Ingresa el ID del visitante: ")
+                                                for visitante in self.zoologico.lista_visitantes:
+                                                    if visitante.id == id_visitante:
+                                                        self.zoologico.registrar_visitante_en_visitas(visitante=visitante, visita=visita)
+                                                        ano_nacimiento = visitante.fecha_nacimiento.year
+                                                        fechaparacalcularedad = (datetime.now().year - 18)
+                                                        cantidad_niños = visita.cantidad_niños
+                                                        cantidad_adultos = visita.cantidad_adultos
+                                                        costo_de_visita = visita.costo_visita
+                                                        numero_visitas = visitante.numero_visitas + 1
+                                                        visitante.numero_visitas = numero_visitas
+
+                                                        if ano_nacimiento <= fechaparacalcularedad:
+                                                            cantidad_adultos = self.zoologico.incrementar_cantidad(cantidad=cantidad_adultos)
+                                                            visita.cantidad_adultos = cantidad_adultos
+                                                            costo_boleto = 100
+                                                        else:
+                                                            cantidad_niños = self.zoologico.incrementar_cantidad(cantidad=cantidad_niños)
+                                                            visita.cantidad_niños = cantidad_niños
+                                                            costo_boleto = 50
+                                                            
+                                                        costo = self.zoologico.incrementa_costo(costo_visita=costo_de_visita, numero_visitas=numero_visitas, boleto=costo_boleto, visitante=visitante)
+                                                        visita.costo_visita = costo
+                                                            
+                                            elif opcion == 2:
+                                                visita.mostrar_visitantes_en_la_visita(id=id_visita)
+
+                                            elif opcion == 3:
+                                                break
+                                                
+                                        else:
+                                            print("Opcion no válida. Por favor, elige un numero entre 1 y 3")
+                                    except ValueError:
+                                        print("Entrada no válida. Por favor, ingresa un número entero")
+                                self.zoologico.registrar_visitas(visita=visita)
                      
                     elif opcion == 5:
                         print("------------------------------------------------------------ \nSeleccionaste registrar un proceso \n------------------------------------------------------------")
@@ -144,10 +195,10 @@ class Menu:
                         self.zoologico.listar_animales()
 
                     elif opcion == 9:
-                        pass
+                        self.zoologico.listar_visitas()
 
                     elif opcion == 10:
-                        pass
+                        self.zoologico.listar_procesos()
 
                     elif opcion == 11:
                         print("************* ELIMINAR UN EMPLEADO *************")

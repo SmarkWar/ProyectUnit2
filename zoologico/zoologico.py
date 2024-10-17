@@ -19,18 +19,21 @@ class Zoologico:
     lista_animales: List[Animal] = []
     list_visitas: List[Visita] = []
     lista_procesos: List[Proceso] = []
+    lista_director: List[Director] = []
     
     #### GENERAR DIRECTOR ####
     def __init__(self):
         director = Director(id="197515IA3Miia54260", nombre="Miguel", apellido="Garcia", fecha_nacimiento=datetime(day=15, month=6, year=1975), curp="MIGAR750615HGUCIA3", contrasenia="ADMIN1*2")
         self.lista_usuarios.append(director)
+        self.lista_director.append(director)
 
     def validar_inicio_sesion(self, id: str, contrasenia: str):
-        for usuario in self.lista_usuarios:
-            if usuario.id == id:
-                if usuario.contrasenia == contrasenia:
-                    return usuario
-        return None
+        director = self.buscar_director_por_id(id_director=id)
+        if director is None:
+            return
+        if director.contrasenia != contrasenia:
+                    return None
+        return director
     
     ### GENERAR ID's ###
     def generar_id(self, usuario: Usuario):
@@ -64,7 +67,7 @@ class Zoologico:
         return id
 
     def generar_id_visita(self, visita: Visita):
-        guia = visita.guia_acargo[:2].upper()
+        guia = visita.guia_acargo.nombre[:2].upper()
         dia = datetime.now().day
         caracteres_aleatorios = self.obtener_caracteres_aleatorios(2)
         aleatorio = randint(0,100000)
@@ -215,9 +218,6 @@ class Zoologico:
     def registrar_visitas(self, visita: Visita):
         self.list_visitas.append(visita)
         print("Visita registrada con exito")
-    
-    def registrar_visitante_en_visitas(self, visitante: Visitante, visita: Visita):
-        visita.registrar_visitante_en_visita(visitante=visitante)
 
     def listar_visitas(self):
         while True:
@@ -236,9 +236,12 @@ class Zoologico:
 
                     elif opcion == 2:
                         id_visita = input("Ingresa el ID de la visita: ")
-                        for visita in self.list_visitas:
-                            if id_visita == visita.id_visita:
-                                visita.mostrar_visitantes_en_la_visita(id=id_visita)
+                        visita = self.buscar_visita_por_id(id_visita=id_visita)
+                        if visita is None:
+                            print("No se encontro ninguna visita con el ID ingresado")
+                            return
+                    
+                        visita.mostrar_visitantes_en_la_visita(id_de_la_visita=id_visita)
 
                     elif opcion == 3:
                         break
@@ -247,6 +250,18 @@ class Zoologico:
                     print("Opcion no válida. Por favor, elige un numero entre 1 y 3")
             except ValueError:
                 print("Entrada no válida. Por favor, ingresa un número entero")
+    
+    def registrar_visitante_en_visitas(self, id_del_visitante: str, id_de_la_visita: str):
+        visitante = self.buscar_visitante_por_id(id_visitante=id_del_visitante)
+        if visitante is None:
+            print("No se encontro ningun visitante con el ID ingresado")
+            return
+        visita = self.buscar_visita_por_id(id_visita=id_de_la_visita)
+        if visita is None:
+            print("No se encontro ningun visitante con el ID ingresado")
+            return
+        visita.registrar_visitante_en_visita(visitante=visitante)
+        print("El visitante se registro a la visita con exito")
             
     def incrementar_cantidad(self, cantidad): ###incrementa la cantidad de niños o adultos##
             return cantidad + 1
@@ -293,3 +308,29 @@ class Zoologico:
                     print("Opcion no válida. Por favor, elige un numero entre 1 y 4")
             except ValueError:
                 print("Entrada no válida. Por favor, ingresa un número entero")
+
+    ### Validaciones/ ###
+
+    def buscar_visitante_por_id(self, id_visitante: str):
+        for visitante in self.lista_visitantes:
+            if visitante.id == id_visitante:
+                return visitante
+        return None
+
+    def buscar_empleado_por_id(self, id_empleado: str):
+        for empleado in self.lista_empleados:
+            if empleado.id == id_empleado:
+                return empleado
+        return None
+
+    def buscar_visita_por_id(self, id_visita: str):
+        for visita in self.list_visitas:
+            if visita.id_visita == id_visita:
+                return visita
+        return None    
+    
+    def buscar_director_por_id(self, id_director: str):
+        for director in self.lista_director:
+            if director.id == id_director:
+                return director
+        return None

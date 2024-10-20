@@ -185,20 +185,18 @@ class Menu:
 
                     elif opcion == 5:
                         print("------------------------------------------------------------ \nSeleccionaste registrar un proceso \n------------------------------------------------------------")
-                        while True:
-                            id_empleado = input("Ingrese el ID del empleado que realizo el proceso: ")
-                            usuario = self.zoologico.validar_empleado(id_empleado=id_empleado)
-                            
-                            if usuario is None:
-                                print("No existe ningun empleado con ese ID")
-                            else: 
-                                if usuario.rol == Rol.MANTENIMIENTO:
-                                    id_de_animal = input("Ingrese el ID del animal: ")
-                                    proceso_que_realizo = self.zoologico.tipo_proceso()
-                                    fecha_de_proceso = datetime.now()
-                                    observaciones = input("Ingresa las obversaciones que tuvo durante el proceso(opcionales): ")
-                                    proceso = Proceso(id_empleado=id_empleado, id_animal=id_de_animal, proceso_que_realizo=proceso_que_realizo, fecha_de_proceso=fecha_de_proceso, observaciones=observaciones)
-                                    self.zoologico.registrar_proceso(proceso=proceso)
+                        id_empleado = input("Ingrese el ID del empleado que realizo el proceso: ")
+                        usuario = self.zoologico.validar_empleado(id_empleado=id_empleado)
+                                
+                        if usuario is None:
+                            print("No existe ningun empleado con ese ID")
+                        if usuario.rol == Rol.MANTENIMIENTO:
+                            id_de_animal = input("Ingrese el ID del animal: ")
+                            proceso_que_realizo = self.zoologico.tipo_proceso()
+                            fecha_de_proceso = datetime.now()
+                            observacion = input("Ingresa las obversaciones que tuvo durante el proceso(opcional): ")
+                            procesos = Proceso(id_empleado=id_empleado, id_animal=id_de_animal, proceso_que_realizo=proceso_que_realizo, fecha_de_proceso=fecha_de_proceso, observaciones=observacion)
+                            self.zoologico.registrar_proceso(proceso=procesos)
 
                     elif opcion == 6:
                         self.zoologico.listar_empleados()

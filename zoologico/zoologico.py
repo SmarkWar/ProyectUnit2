@@ -288,9 +288,9 @@ class Zoologico:
         while True:
             try:
                 print("**** TIPO DE PROCESO ****")
-                print("1. Vegetariana")
-                print("2. Carnivora")
-                print("3. Omnivora")
+                print("1. Mantenimiento")
+                print("2. Limpieza")
+                print("3. Alimentacion")
                 print("4. Otro")
                 opcion= int(input("Seleccione el rol que va a tener el empleado: "))
                 
